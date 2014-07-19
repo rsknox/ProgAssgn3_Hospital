@@ -1,6 +1,7 @@
 ## =====
 ## R. Peng Programming Class, Jul 2014
 ## Programming Assignment 3:  Hospital Comparison analysis
+## First commit to GitHub on 19 Jul with Parts 1 and 2 tested and functional; added a ## few comments below
 ## =====
 
 ## =====
@@ -25,6 +26,10 @@ best <- function(state, outcome) {
      ## Read outcome data
      
      mastFrame <- read.csv("outcome-of-care-measures.csv", colClasses = "character", na.string = "Not Available")
+     
+     ## in read above, need to strip out the 'Not Available' entries in the
+     ## that need to contain only numeric data, else it will throw a warning
+     ## message when calling the function
      
      ## convert columns from character to numeric for correct processing
 
@@ -62,8 +67,12 @@ best <- function(state, outcome) {
           if (valOutcome[2]) {
                colNr <- 17
           } else colNr <- 23
+          ## Have already determined that the 'outome' input parameter is valid,
+          ## so if not one of the first two, then has to be the third column
      }
-
+     
+     ## grab the hospital name and return to the function
+     
      subsetOrdered <- subsetFrame[order(subsetFrame[colNr], subsetFrame[2]),]
      
      return(subsetOrdered[1, 2])
