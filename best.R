@@ -32,7 +32,7 @@ best <- function(state, outcome) {
      ## message when calling the function
      
      ## convert columns from character to numeric for correct processing
-
+     
      mastFrame[ , 11] <- as.numeric(mastFrame[ , 11], na.rm = TRUE)
      mastFrame[ , 17] <- as.numeric(mastFrame[ , 17])
      mastFrame[ , 23] <- as.numeric(mastFrame[ , 23])
@@ -43,14 +43,14 @@ best <- function(state, outcome) {
      
      valOutcomeVec <- c("heart attack", "heart failure", "pneumonia")
      valOutcome <- outcome == valOutcomeVec
-
+     
      if (sum(valOutcome) != 1) stop("invalid outcome")
-
-          ## It looks like:
-               ##        "heart attack" is outcome[, 11],
-               ##        "heart failure" is outcome[, 17],
-               ##        "pneumonia" is outcome[, 23]
-               ##        Hospital.Name is outcome[ , 2]
+     
+     ## It looks like:
+     ##        "heart attack" is outcome[, 11],
+     ##        "heart failure" is outcome[, 17],
+     ##        "pneumonia" is outcome[, 23]
+     ##        Hospital.Name is outcome[ , 2]
      
      ## Return hospital name in that state with lowest 30-day death
      ## rate
@@ -77,15 +77,3 @@ best <- function(state, outcome) {
      
      return(subsetOrdered[1, 2])
 }
-##options(warn = -1)  ## surpress warning message In best("TX", "heart attack") : 
-##                       NAs introduced by coercion
-best("MD", "pneumonia")
-##options(warn = 0)  ## enable warning messages
-source(best)
-source("http://d396qusza40orc.cloudfront.net/rprog%2Fscripts%2Fsubmitscript3.R")
-submit()
-
-source("rankhospital.R")
-rankhospital("TX", "heart failure", 4)
-rankhospital("MD", "heart attack", "worst")
-rankhospital("MN", "heart attack", 5000)
