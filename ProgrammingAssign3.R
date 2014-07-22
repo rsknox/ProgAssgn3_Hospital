@@ -89,3 +89,74 @@ source("rankhospital.R")
 rankhospital("TX", "heart failure", 4)
 rankhospital("MD", "heart attack", "worst")
 rankhospital("MN", "heart attack", 5000)
+
+num <- "best"
+#typeof(num)
+
+row <- NA
+print("top")
+# first check if num is a character or a number
+if (typeof(num) != "character") {
+  # check to see if num is a valid number
+  if (num <= 0) {
+    print("if 1")
+    stop ("invalid num")
+  } else {
+    if (num > 0) {
+      print("if 2")
+      row <- num
+} else {  # if it gets here, it is not a number
+  if (num == "best") {
+    print("if 3")
+    row <- 1
+  } else {
+    if (num == "worst") {
+      print("if 4")
+      row <- -1  # set row negative for check later on
+    } else {
+      stop("invalid num")
+    }
+  }
+}
+}
+}
+row
+
+# first check to see if num is a valid number
+if (num <= 0) {
+  print("if 1")
+  stop ("invalid num")
+} else {
+  if (num > 0) {
+    print("if 2")
+    row <- num
+  } else {  # it gets to this point num is not a number
+    if (num == "best") {
+      print("if 3")
+      row <- 1
+    } else {
+      if (num == "worst") {
+        print("if 4")
+        row <- -1  # set row negative for check later on
+      } else {
+        print("final else")
+        stop("invalid num")
+      }
+    }
+  }
+}
+row
+
+if (num == "best") {
+  row <- 1
+} else {
+  if (num == "worst") {
+    row = -1
+  } else {
+    if (num <= 0) {
+      stop("invalid num")
+    }
+    row <- num
+  }
+}
+row
